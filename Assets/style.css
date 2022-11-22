@@ -26,6 +26,7 @@ header {
     position: fixed;
     padding-bottom: 7px;
     border-bottom: solid white 2px;
+    text-align: center;
 }
 
 .pastBar {
@@ -36,6 +37,7 @@ header {
     width: 25%;
     margin: 60px auto auto 0;
     position: fixed;
+    padding: 5px 15px;
 }
 
 .mainArea {
@@ -70,5 +72,21 @@ header {
     border-radius: 5px;
     border: none;
     margin: 4px;
+    width: 80%;
+    margin-left: 10%;
 }
 
+#searchBtn {
+    border-radius: 5px;
+    border: none;
+    margin: 4px;
+    width: 80%;
+    margin-top: 10px;
+}
+
+#citySearch {
+    width: 80%;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+}
