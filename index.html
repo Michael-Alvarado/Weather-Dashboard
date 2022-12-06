@@ -16,21 +16,74 @@
         <header>
             <h1>Weather Dashboard</h1>
         </header>
-        <main>
-            <div class="searchBar container">
+        <div class="container">
+            <div class="row">
+                <div class="searchBar col-sm-3">
 
+                </div>
+                <div class="mainArea col-lg">
+                    <div class="card main-card">
+                        <h2 class="card-title" id="card-header"></h2>
+                        <ul class="mainCardList list-group">
+                            <li class="list-group-item"><img class="lrg-icon" id="img" /></li>
+                            <li class="list-group-item" id="temp"></li>
+                            <li class="list-group-item" id="wind"></li>
+                            <li class="list-group-item" id="humid"></li>
+                            <li class="list-group-item" id="sunrise"></li>
+                            <li class="list-group-item" id="sunset"></li>
+                        </ul>
+                    </div>
+                    <h3>5-Day Forecast:</h3>
+                    <div class="row justify-content-between align-items-center forecast-cards">
+                        <div class="card" id="card0">
+                            <h4 class="card-title" id="title0"></h4>
+                            <ul class="list-group list-group-flush row" id="ul0">
+                                <li class="list-group-item"><img class="icon" id="img0" /></li>
+                                <li class="list-group-item" id="temp0"></li>
+                                <li class="list-group-item" id="wind0"></li>
+                                <li class="list-group-item" id="humid0"></li>
+                            </ul>
+                        </div>
+                        <div class="card" id="card1">
+                            <h4 class="card-title" id="title1"></h4>
+                            <ul class="list-group list-group-flush row" id="ul1">
+                                <li class="list-group-item"><img class="icon" id="img1" /></li>
+                                <li class="list-group-item" id="temp1"></li>
+                                <li class="list-group-item" id="wind1"></li>
+                                <li class="list-group-item" id="humid1"></li>
+                            </ul>
+                        </div>
+                        <div class="card" id="card2">
+                            <h4 class="card-title" id="title2"></h4>
+                            <ul class="list-group list-group-flush row" id="ul2">
+                                <li class="list-group-item"><img class="icon" id="img2" /></li>
+                                <li class="list-group-item" id="temp2"></li>
+                                <li class="list-group-item" id="wind2"></li>
+                                <li class="list-group-item" id="humid2"></li>
+                            </ul>
+                        </div>
+                        <div class="card" id="card3">
+                            <h4 class="card-title" id="title3"></h4>
+                            <ul class="list-group list-group-flush row" id="ul3">
+                                <li class="list-group-item"><img class="icon" id="img3" /></li>
+                                <li class="list-group-item" id="temp3"></li>
+                                <li class="list-group-item" id="wind3"></li>
+                                <li class="list-group-item" id="humid3"></li>
+                            </ul>
+                        </div>
+                        <div class="card" id="card4">
+                            <h4 class="card-title" id="title4"></h4>
+                            <ul class="list-group list-group-flush row" id="ul4">
+                                <li class="list-group-item"><img class="icon" id="img4" /></li>
+                                <li class="list-group-item" id="temp4"></li>
+                                <li class="list-group-item" id="wind4"></li>
+                                <li class="list-group-item" id="humid4"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mainArea container">
-                <h2>Main Area</h2>
-            </div>
-            <div class="pastBar">
-
-            </div>
-            <div class="lowerArea container">
-                <h3>5-Day Forecast:</h3>
-            </div>
-
-        </main>
+        </div>
         <footer>
 
         </footer>

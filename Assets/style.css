@@ -6,87 +6,10 @@
     --powder-blue: #C0E0DE;
 }
 
-main {
-    background-color: var(--charcoal);
+.lrg-icon {
+    width: 75px;
 }
 
-header {
-    background-color: var(--steel-blue);
-    color: var(--powder-blue);
-    text-align: center;
-}
-
-.searchBar {
-    background-color: var(--dark-jungle-green);
-    color: var(--middle-blue-green);
-    display: inline-flex;
-    flex-direction: column;
-    width: 25%;
-    margin-left: 0;
-    position: fixed;
-    padding-bottom: 7px;
-    border-bottom: solid white 2px;
-    text-align: center;
-}
-
-.pastBar {
-    background-color: var(--dark-jungle-green);
-    color: var(--middle-blue-green);
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-    margin: 60px auto auto 0;
-    position: fixed;
-    padding: 5px 15px;
-}
-
-.mainArea {
-    background-color: var(--charcoal);
-    color: var(--powder-blue);
-    display: inline-flex;
-    flex-direction: row;
-    width: 75%;
-    margin-left: 25%;
-}
-
-.lowerArea {
-    background-color: var(--steel-blue);
-    color: var(--powder-blue);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    width: 75%;
-    margin-left: 25%;
-}
-
-.card {
-
-}
-
-.list-group {
-    padding-top: 3px;
-    padding-bottom: 3px;
-}
-
-.pastBtn {
-    border-radius: 5px;
-    border: none;
-    margin: 4px;
-    width: 80%;
-    margin-left: 10%;
-}
-
-#searchBtn {
-    border-radius: 5px;
-    border: none;
-    margin: 4px;
-    width: 80%;
-    margin-top: 10px;
-}
-
-#citySearch {
-    width: 80%;
-    text-align: center;
-    border-radius: 5px;
-    border: none;
+.icon {
+    width: 50px;
 }
