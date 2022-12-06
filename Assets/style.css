@@ -45,6 +45,7 @@ header {
 
 form {
     text-align: center;
+    border-bottom: .5rem solid var(--charcoal);
 }
 
 button {
