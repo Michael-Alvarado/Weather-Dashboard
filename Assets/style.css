@@ -6,6 +6,64 @@
     --powder-blue: #C0E0DE;
 }
 
+body {
+    background-color: var(--charcoal);
+}
+
+header {
+    background-color: var(--steel-blue);
+    color: var(--powder-blue);
+    text-align: center;
+}
+
+.row {
+    margin: 0;
+}
+
+.searchBar {
+    background-color: var(--steel-blue);
+    color: var(--powder-blue);
+    padding: 0;
+}
+
+.mainArea {
+    background-color: var(--charcoal);
+    color: var(--powder-blue);
+}
+
+.card {
+    border: none;
+    background-color: var(--steel-blue);
+}
+
+.card-title {
+    background-color: var(--charcoal);
+    border: .25rem solid var(--steel-blue);
+    margin-bottom: 0;
+    padding-left: .5rem;
+}
+
+form {
+    text-align: center;
+}
+
+button {
+    border-radius: 5px;
+    border: none;
+    width: 75%;
+    margin: .25rem;
+}
+
+.icon {
+    align-self: center;
+}
+
+.list-group-item {
+    background-color: var(--steel-blue);
+    border: none;
+    padding: 0.5rem 1.25rem;
+}
+
 .lrg-icon {
     width: 75px;
 }
