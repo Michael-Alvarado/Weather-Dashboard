@@ -87,7 +87,6 @@ function pastSearch() {
 	searchHist.length = 0;
 	while (localStorage.getItem(`City${i}`)) {
 		searchHist.push(localStorage.getItem(`City${i}`));
-		// console.log(searchHist[i]);
 		createButton(searchHist[i]);
 		i++;
 	}
@@ -127,8 +126,6 @@ function cityLocation(city) {
 			return response.json();
 		})
 		.then((data) => {
-			// console.log(data[0].lat);
-			// console.log(data[0].lon);
 			getWeather(data[0].lat, data[0].lon);
 			getForecast(data[0].lat, data[0].lon);
 		});
@@ -173,8 +170,8 @@ function getWeather(lat, lon) {
 				sunUp.getDate() +
 				'/' +
 				sunUp.getFullYear();
-			// console.log(data);
 
+			// Call function to populate main area of page
 			mainCard(
 				name,
 				icon,
@@ -189,6 +186,7 @@ function getWeather(lat, lon) {
 		});
 }
 
+// Function to capture forecast data from API call
 function getForecast(lat, lon) {
 	fetch(
 		'https://api.openweathermap.org/data/2.5/forecast?lat=' +
@@ -201,11 +199,11 @@ function getForecast(lat, lon) {
 			return response.json();
 		})
 		.then((data) => {
-			// console.log(data);
 			forecastCards(data);
 		});
 }
 
+// function to take current weather data and populate card with information
 function mainCard(
 	city,
 	weatherIcon,
@@ -243,6 +241,7 @@ function mainCard(
 	sunSetLiEl.textContent = `Sunset: ${sunSet}PM`;
 }
 
+// Function to take forecast data and populate forecast cards
 function forecastCards(forecastData) {
 	const dates = [];
 	const temps = [];
@@ -251,11 +250,13 @@ function forecastCards(forecastData) {
 	const icons = [];
 	const descriptions = [];
 
+	// Check to see if forecast cards are visible, make visible if not
 	let enable = document.querySelector('.invisible');
 	if (enable) {
 		enable.classList.remove('invisible');
 	}
 
+	// Populate forecast arrays to populate the data on the cards in the next step
 	for (var i = 3; i < forecastData.cnt; i += 8) {
 		let tempDate = new Date(forecastData.list[i].dt * 1000);
 		dates.push(
@@ -272,11 +273,8 @@ function forecastCards(forecastData) {
 		icons.push(forecastData.list[i].weather[0].icon);
 		descriptions.push(forecastData.list[i].weather[0].description);
 	}
-	// console.log('Temp: ' + temps[0]);
-	// console.log(dates[0]);
-	// console.log('Wind: ' + winds[0] + 'mph');
-	// console.log('Humidity: ' + humidity[0] + '%');
 
+	// Populate content on forecast cards
 	for (var i = 0; i < dates.length; i++) {
 		let icon = document.getElementById(`img${i}`);
 		icon.setAttribute(
