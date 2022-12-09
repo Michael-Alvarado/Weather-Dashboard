@@ -72,3 +72,12 @@ button {
 .icon {
     width: 50px;
 }
+
+.container {
+    padding: 0;
+}
+
+.btn {
+    border: solid 1px var(--powder-blue);
+    color: var(--powder-blue);
+}

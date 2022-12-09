@@ -1,53 +1,13 @@
 // Array to store all searches performed from local storage
 const searchHist = [];
 
-// Creating a new form for Side Bar
-var newForm = document.createElement('form');
-
-// Creating the label for the form
-var formLabel = document.createElement('label');
-formLabel.textContent = 'Search for a City:';
-formLabel.setAttribute('for', 'citySearch');
-
-// Creating the input for the form
-var formInput = document.createElement('input');
-formInput.placeholder = 'San Diego';
-formInput.name = 'citySearch';
-formInput.type = 'text';
-formInput.setAttribute('id', 'citySearch');
-
-// Creating the button for the form
-var formBtn = document.createElement('button');
-formBtn.setAttribute('id', 'searchBtn');
-formBtn.textContent = 'Search';
-
-// Creating a button to clear search history
-var clearBtn = document.createElement('button');
-clearBtn.setAttribute('id', 'clearBtn');
-clearBtn.textContent = 'Clear History';
-
-// Appending the pieces of the form to the form
-newForm.append(formLabel);
-newForm.append(formInput);
-newForm.append(formBtn);
-newForm.append(clearBtn);
-
-// Appending the form to the Side Bar
-document.querySelector('.searchBar').appendChild(newForm);
-
 init();
-
-// Adding event listeners to buttons from past searches
-for (var i = 0; i < searchHist.length; i++) {
-	var tempBtn = document.getElementById(searchHist[i]);
-	tempBtn.addEventListener('click', cityLocation(searchHist[i]));
-}
 
 // Adding event listener to the clear history button
 let clrHistBtn = document.getElementById('clearBtn');
 clrHistBtn.addEventListener('click', function (event) {
 	event.preventDefault();
-	searchHist.length = 0;
+	deleteButtons();
 });
 
 // Adding event listener to the search button
@@ -71,8 +31,53 @@ searchBtn.addEventListener('click', function (event) {
 	}
 });
 
+// Adding event listeners to buttons from past searches
+var tempBtn = document.querySelector('.pastBox');
+tempBtn.addEventListener('click', function (event) {
+	var search = event.target.innerText;
+	cityLocation(search);
+});
+
 // Function to pull content from local storage from previous visit(s) on page load
 function init() {
+	// Creating a new form for Side Bar
+	var newForm = document.createElement('form');
+	newForm.classList.add('form-group');
+
+	// Creating the label for the form
+	var formLabel = document.createElement('label');
+	formLabel.textContent = 'Search for a City:';
+	formLabel.setAttribute('form', 'citySearch');
+
+	// Creating the input for the form
+	var formInput = document.createElement('input');
+	formInput.placeholder = 'San Diego';
+	formInput.name = 'citySearch';
+	formInput.type = 'text';
+	formInput.setAttribute('id', 'citySearch');
+
+	// Creating the button for the form
+	var formBtn = document.createElement('button');
+	formBtn.setAttribute('id', 'searchBtn');
+	formBtn.textContent = 'Search';
+
+	// Creating a button to clear search history
+	var clearBtn = document.createElement('button');
+	clearBtn.setAttribute('id', 'clearBtn');
+	clearBtn.textContent = 'Clear History';
+
+	// Appending the pieces of the form to the form
+	newForm.append(formLabel);
+	newForm.append(formInput);
+	newForm.append(formBtn);
+	newForm.append(clearBtn);
+
+	var pastBox = document.createElement('div');
+	pastBox.classList.add('pastBox');
+
+	// Appending the form to the Side Bar
+	document.querySelector('.searchBar').appendChild(newForm);
+	document.querySelector('.searchBar').appendChild(pastBox);
 	pastSearch();
 }
 
@@ -82,11 +87,9 @@ function pastSearch() {
 	searchHist.length = 0;
 	while (localStorage.getItem(`City${i}`)) {
 		searchHist.push(localStorage.getItem(`City${i}`));
-		console.log(searchHist[i]);
-		i++;
-	}
-	for (var i = 0; i < searchHist.length; i++) {
+		// console.log(searchHist[i]);
 		createButton(searchHist[i]);
+		i++;
 	}
 }
 
@@ -98,9 +101,19 @@ function createButton(city) {
 	newBtn.textContent = city;
 
 	var newLiEl = document.createElement('li');
-	newLiEl.classList.add('list-group', 'history-button');
+	newLiEl.classList.add('list-group-item', 'history-button');
 	newLiEl.append(newBtn);
-	document.querySelector('.searchBar').appendChild(newLiEl);
+	document.querySelector('.pastBox').appendChild(newLiEl);
+}
+
+// Function to clear local storage and remove past search buttons
+function deleteButtons() {
+	localStorage.clear();
+	for (var i = 0; i < searchHist.length; i++) {
+		buttonToDelete = document.getElementById(`${searchHist[i]}`);
+		buttonToDelete.parentNode.remove();
+	}
+	searchHist.length = 0;
 }
 
 // Function to gather latitude and longitude coordinates of city for weather API call
@@ -114,8 +127,8 @@ function cityLocation(city) {
 			return response.json();
 		})
 		.then((data) => {
-			console.log(data[0].lat);
-			console.log(data[0].lon);
+			// console.log(data[0].lat);
+			// console.log(data[0].lon);
 			getWeather(data[0].lat, data[0].lon);
 			getForecast(data[0].lat, data[0].lon);
 		});
@@ -135,17 +148,11 @@ function getWeather(lat, lon) {
 		})
 		.then((data) => {
 			let name = data.name;
-			console.log(name);
 			let icon = data.weather[0].icon;
-			console.log(icon);
 			let weatherDescription = data.weather[0].main;
-			console.log(weatherDescription);
 			let windSpeed = data.wind.speed;
-			console.log('Wind speed: ' + windSpeed + ' mph');
 			let currentTemp = Math.round(data.main.temp);
-			console.log(currentTemp + '\u00B0');
 			let humidity = data.main.humidity;
-			console.log('Humidity %: ' + humidity);
 			let sunUp = new Date(data.sys.sunrise * 1000);
 			let sunRise, sunSet;
 			if (sunUp.getMinutes() < 10) {
@@ -153,14 +160,12 @@ function getWeather(lat, lon) {
 			} else {
 				sunRise = sunUp.getHours() + ':' + sunUp.getMinutes();
 			}
-			console.log('Sunrise: ' + sunRise + 'am');
 			let sunDown = new Date(data.sys.sunset * 1000);
 			if (sunDown.getHours() < 12) {
 				sunSet = sunDown.getHours() + ':' + sunDown.getMinutes();
 			} else {
 				sunSet = sunDown.getHours() - 12 + ':' + sunDown.getMinutes();
 			}
-			console.log('Sunset: ' + sunSet + 'pm');
 			let today =
 				sunDown.getMonth() +
 				1 +
@@ -168,8 +173,7 @@ function getWeather(lat, lon) {
 				sunUp.getDate() +
 				'/' +
 				sunUp.getFullYear();
-			console.log(today);
-			console.log(data);
+			// console.log(data);
 
 			mainCard(
 				name,
@@ -197,7 +201,7 @@ function getForecast(lat, lon) {
 			return response.json();
 		})
 		.then((data) => {
-			console.log(data);
+			// console.log(data);
 			forecastCards(data);
 		});
 }
@@ -247,6 +251,11 @@ function forecastCards(forecastData) {
 	const icons = [];
 	const descriptions = [];
 
+	let enable = document.querySelector('.invisible');
+	if (enable) {
+		enable.classList.remove('invisible');
+	}
+
 	for (var i = 3; i < forecastData.cnt; i += 8) {
 		let tempDate = new Date(forecastData.list[i].dt * 1000);
 		dates.push(
@@ -263,10 +272,10 @@ function forecastCards(forecastData) {
 		icons.push(forecastData.list[i].weather[0].icon);
 		descriptions.push(forecastData.list[i].weather[0].description);
 	}
-	console.log('Temp: ' + temps[0]);
-	console.log(dates[0]);
-	console.log('Wind: ' + winds[0] + 'mph');
-	console.log('Humidity: ' + humidity[0] + '%');
+	// console.log('Temp: ' + temps[0]);
+	// console.log(dates[0]);
+	// console.log('Wind: ' + winds[0] + 'mph');
+	// console.log('Humidity: ' + humidity[0] + '%');
 
 	for (var i = 0; i < dates.length; i++) {
 		let icon = document.getElementById(`img${i}`);
