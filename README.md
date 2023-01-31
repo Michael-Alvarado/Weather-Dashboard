@@ -1,42 +1,49 @@
 # Weather Dashboard
 
-  ## Description
-  
-  Application to capture current and future weather data using third party API calls and displays them in a dashboard. Saves previous searches to local storage for quick reference on subsequent visits to application. 
+## Description
 
-  ## Table of Contents
-  
-  - [Installation](#installation)
-  - [Usage](#Usage)
-  - [License](#License)
-  - [Contributions](#Contributions)
-  - [Tests](#Tests)
-  - [Questions](#Questions)
+Application to capture current and future weather data using third party API calls and displays them in a dashboard. Saves previous searches to local storage for quick reference on subsequent visits to application.
 
-  ## Installation
-  
-  How to install:
-  N/A
+## Table of Contents
 
-  ## Usage
-  
-  Navigate to URL and enter city who's weather information you'd like displayed
+- [Installation](#installation)
+- [Usage](#Usage)
+- [License](#License)
+- [Contributions](#Contributions)
+- [Tests](#Tests)
+- [Questions](#Questions)
 
-  ## License
-  
-  [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+## Installation
 
-  ## Contributions
-  
-  Reach out to me.
+How to install:
+N/A
 
-  ## Tests
-  
-  Steps necessary to test:
-  N/A
+## Usage
 
-  ## Questions
-  
-  Feel free to reach out to me if you have any questions. Contact info below:
-  - [GitHub](https:://github.com/Michael-Alvarado)
-  - Email: alvaradomike5@gmail.com
+Navigate to URL and enter city who's weather information you'd like displayed
+<br />
+<br />
+[Link to deployed page](https://michael-alvarado.github.io/Weather-Dashboard/)
+<br />
+<br />
+![Screenshot](./Images/Weather-Dashboard.png)
+
+## License
+
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Contributions
+
+Reach out to me.
+
+## Tests
+
+Steps necessary to test:
+N/A
+
+## Questions
+
+Feel free to reach out to me if you have any questions. Contact info below:
+
+- [GitHub](https:://github.com/Michael-Alvarado)
+- Email: alvaradomike5@gmail.com
